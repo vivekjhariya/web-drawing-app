@@ -199,6 +199,11 @@ npm run dev
 - Optimized build with cached layers for fast rebuilds
 - Health checks for automatic service monitoring
 
+
+### you can also use dockerHub in this image on pull 
+
+docker pull vjstylose/my-drawing-app
+
 ## Production Deployment
 
 This application is production-ready and can be deployed on:
