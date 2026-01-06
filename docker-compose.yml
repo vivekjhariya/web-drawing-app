@@ -1,0 +1,39 @@
+services:
+  mysql:
+    image: mysql:8.0-debian
+    container_name: notepad_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: notepad
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass123
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot123"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  app:
+    build: .
+    container_name: notepad_app
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: mysql+pymysql://user:pass123@mysql:3306/notepad
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - app_net
+
+volumes:
+  db_data:
+
+networks:
+  app_net:
