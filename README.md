@@ -2,7 +2,7 @@
 
 A modern, ultra-lightweight notepad application with advanced UI, themes, animations, and multi-tab interface.
 
-## What is this Project
+## What is this Projects
 
 This is a complete web-based notepad application that runs in Docker containers. It provides a rich text editing experience with modern UI features like dark/light themes, multi-tab interface, and persistent data storage.
 
