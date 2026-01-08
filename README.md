@@ -17,7 +17,7 @@ This is a complete web-based notepad application that runs in Docker containers.
 - Secure non-root user with minimal attack surface
 - Universal compatibility - runs on any instance without permission issues
 
-## Architecture
+## Architectures
 
 ```
 Frontend (React SPA) -> Backend (FastAPI) -> Database (MySQL)
