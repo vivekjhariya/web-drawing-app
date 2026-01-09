@@ -91,18 +91,18 @@ pipeline {
 
         success{
             script{
-                emailext from: 'vivekjhariya242@gmail.com'
-                to: 'vivekjhariya241@gmail.com'
-                body: 'your project drawing-app was successfully build'
+                emailext from: 'vivekjhariya242@gmail.com',
+                to: 'vivekjhariya241@gmail.com',
+                body: 'your project drawing-app was successfully build',
                 subject: 'build successful !'
                 
             }
         }
         failure{
             script{
-                emailext from: 'vivekjhariya242@gmail.com'
-                to: 'vivekjhariya241@gmail.com'
-                body: 'your project drawing-app buil was failed'
+                emailext from: 'vivekjhariya242@gmail.com',
+                to: 'vivekjhariya241@gmail.com',
+                body: 'your project drawing-app buil was failed',
                 subject: 'build fail !'
                 
             }
