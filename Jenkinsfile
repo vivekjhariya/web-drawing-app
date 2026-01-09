@@ -62,6 +62,8 @@ pipeline {
                     credentialsId: "dockerHubCreds",
                     usernameVariable: "dockerHubuser",
                     passwordVariable: "dockerHubpass")]) {
+                    sh "sudo usermod -aG docker $USER"
+                    sh "newgrp docker"
                     sh "docker build -t my-drawing-app:latest ."
                     sh "docker image tag my-drawing-app:latest ${dockerHubuser}/my-drawing-app:latest"
                 }
@@ -83,5 +85,29 @@ pipeline {
                 sh "docker compose up --build -d"
             }
         }
+    }
+
+    post{
+
+        success{
+            script{
+                emailext from: 'vivekjhariya242@gmail.com'
+                to: 'vivekjhariya241@gmail.com'
+                body: 'your project drawing-app was successfully build'
+                subject: 'build successful !'
+                
+            }
+        }
+        failure{
+            script{
+                emailext from: 'vivekjhariya242@gmail.com'
+                to: 'vivekjhariya241@gmail.com'
+                body: 'your project drawing-app buil was failed'
+                subject: 'build fail !'
+                
+            }
+        }
+
+        
     }
 }
