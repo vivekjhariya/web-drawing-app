@@ -15,7 +15,7 @@ This is a complete web-based notepad application that runs in Docker containers.
 - Smart organization with folder system and favorites
 - Ultra-lightweight Docker build (130MB total)
 - Secure non-root user with minimal attack surface
-- Universal compatibility - runs on any instance without permission issues
+- Universal compatibility - runs on any instance without permission issuess
 
 ## Architectures
 
@@ -26,7 +26,7 @@ Frontend (React SPA) -> Backend (FastAPI) -> Database (MySQL)
 
 
 
-## Step by Step Installation
+## Step by Step Installation you can follow
 
 ### Step 1: Clone the Repository
 ```bash
