@@ -9,6 +9,14 @@ pipeline {
 
     stages {
 
+         stage("cleanupOldDockerImages") {
+            steps {
+                script {
+                    dockerCleanup("web-drawing-app", 2)
+                }
+            }
+        }
+
         stage("repoClone") {
             steps {
                 script {
@@ -51,16 +59,37 @@ pipeline {
                 }
             }
         }
-
-        stage("cleanupOldDockerImages") {
+         stage("owaspdependencycheck") {
             steps {
                 script {
-                    dockerCleanup("web-drawing-app", 2)
+                    owaspDependencyScan("owaspdeps")
+                }
+            }
+        }
+        stage("sonarqube scan") {
+            steps {
+                script {
+                    sonarQubeQualityAnalysis(
+
+                        sonarQubeTokenName: 'sonarqube',
+          sonarQubeProjectKey: 'my-drawing-service',
+          sonarQubeProjectName: 'my drawing Service',
+          sonarQubeInstallationName: 'sonarqube-prod',
+          sonarQubeScannerHome: tool('sonar-scanner')
+                        
+                    )
+                }
+            }
+        }
+          stage("sonarqubeCheckQualityGates") {
+            steps {
+                script {
+                    sonarQubeQualityGate()
                 }
             }
         }
 
-        stage("dockerImageBuild") {
+       stage("dockerImageBuild") {
             steps {
                 script {
                     dockerBuild("web-drawing-app")
