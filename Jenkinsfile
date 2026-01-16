@@ -71,7 +71,7 @@ pipeline {
                 script {
                     sonarQubeQualityAnalysis(
 
-                        sonarQubeTokenName: 'sonarqube',
+                        sonarQubeTokenName: 'sonarqubeCred',
           sonarQubeProjectKey: 'my-drawing-service',
           sonarQubeProjectName: 'my drawing Service',
           sonarQubeInstallationName: 'sonarqube-prod',
