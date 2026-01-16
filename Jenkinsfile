@@ -73,7 +73,7 @@ pipeline {
 
                         sonarQubeTokenName: 'sonarqubeCred',
           sonarQubeProjectKey: 'my-drawing-service',
-          sonarQubeProjectName: 'my drawing Service',
+          sonarQubeProjectName: 'my-drawing-project',
           sonarQubeInstallationName: 'sonarqube-prod',
           sonarQubeScannerHome: tool('sonar-scanner')
                         
